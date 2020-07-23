@@ -26,12 +26,14 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.idcuenta)
         </td>
         <td>
+          
             @(item.tipomov==1?"Ingreso":"Egreso")
         </td>
         <td>

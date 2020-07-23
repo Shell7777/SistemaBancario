@@ -19,21 +19,49 @@
             @Html.DisplayNameFor(model => model.categoria)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.saldoinicial)
+           Total o limite de linea 
         </th>
+        <th>
+            Debe
+        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.nombre)
         </td>
         <td>
-            @(item.categoria==1?"Propia":"Credito")
+            @(item.categoria == 1 ? "Propia" : "Credito")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.saldoinicial)
+            @{
+
+                if (item.categoria == 2)
+                {
+                    <span> @Html.DisplayFor(modelItem => item.limiteSaldo)</span>
+                }
+                else
+                {
+                    <span> @Html.DisplayFor(modelItem => item.saldoinicial)</span>
+                }
+            }
+
+        </td>
+        <td>
+            @{
+                if (item.categoria == 2)
+                {
+                    <span>@item.saldoinicial</span>
+                }
+                else
+                {
+                    <span> </span> 
+                }
+            }
         </td>
         <td>
             <a class="fedo" href="/Home/hacerMoviemiento?id=@item.id">Hacer Moviemiento</a>|

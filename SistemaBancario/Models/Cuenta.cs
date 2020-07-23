@@ -11,6 +11,7 @@ namespace SistemaBancario.Models
         public string nombre { get; set; }
         public int categoria { get; set; }
         public decimal  saldoinicial { get; set; }
-    
+        public decimal limiteSaldo { get; set; }
+
     }
 }

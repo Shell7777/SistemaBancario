@@ -26,6 +26,11 @@ namespace SistemaBancario.Service
             return Context.Movimientos.Where(a=>a.idcuenta==id).ToList();
         }
         public void CrearCuenta(Cuenta cuenta) {
+            if (cuenta.categoria == 2) {
+                cuenta.limiteSaldo = cuenta.saldoinicial;
+                cuenta.saldoinicial = 0;
+
+            }
             Context.Cuentas.Add(cuenta);
             Context.SaveChanges();
         }
