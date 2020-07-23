@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SistemaBancario.Models.Cuenta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+  <a id="crearCuenta" href="/Home/CrearCuenta">Crear una cuenta</a>  
+</p>
+<h1>Saldo total de las cuentas es : @ViewBag.saldototal</h1>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldoinicial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @(item.categoria==1?"Propia":"Credito")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldoinicial)
+        </td>
+        <td>
+            <a class="fedo" href="/Home/hacerMoviemiento?id=@item.id">Hacer Moviemiento</a>|
+            <a class="dodo" href="/Home/listarMoviemiento?id=@item.id">Ver Moviemientos</a>
+        </td>
+    </tr>
+}
+
+</table>

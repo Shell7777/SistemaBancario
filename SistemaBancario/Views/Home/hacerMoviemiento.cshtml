@@ -1,0 +1,25 @@
+﻿@model SistemaBancario.Models.Movimiento
+
+@{
+    ViewBag.Title = "hacerMoviemiento";
+}
+
+<h2>hacerMoviemiento</h2>
+<div>
+    Nombre<h1>@ViewBag.cuenta.nombre</h1>
+    Tipo <h1>@ViewBag.cuenta.categoria</h1>
+    Saldo <h1>@ViewBag.cuenta.saldoinicial</h1>
+</div>
+<hr />
+<h1 style="color:red">@Html.ValidationMessage("saldo")</h1>
+<form method="post" action="/Home/hacerMoviemiento">
+    Selecion la opcion:
+    <select id="tipo" name="tipomov">
+        <option value="1">Agregar</option>
+        <option value="2">Retirar</option>
+    </select>
+    <input name="idcuenta"  hidden value="@ViewBag.cuenta.id" />
+    Descripcion <textarea id="descripcion" name="descripcion"></textarea>
+    monto <input id="monto" name="monto" />
+    <button id="boton">Enviar</button>
+</form>
